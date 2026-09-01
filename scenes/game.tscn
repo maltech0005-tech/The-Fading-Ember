@@ -1,0 +1,187 @@
+[gd_scene load_steps=17 format=3 uid="uid://yicge48108e0"]
+
+[ext_resource type="PackedScene" uid="uid://b2n1gge5pb7nl" path="res://scenes/floor.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="2_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://cqi10aiiieect" path="res://assests/candle.png" id="3_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://dr2lwwl8w3g3k" path="res://assests/health_bar.png" id="4_iywne"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p57ef"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 160, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5sy4"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 144, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gee14"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 0, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 128, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 112, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvpfn"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 96, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 80, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 64, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 48, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 32, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
+atlas = ExtResource("4_iywne")
+region = Rect2(0, 16, 160, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rysoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p57ef")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5sy4")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gee14")
+}],
+"loop": true,
+"name": &"10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tnpc")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtaks")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvpfn")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dinhu")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvuet")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trtic")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir15t")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}],
+"loop": true,
+"name": &"9",
+"speed": 5.0
+}]
+
+[node name="Game" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_yqjtg")]
+position = Vector2(-1, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(143, 80)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, 1)
+zoom = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="candle" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(22, 17)
+texture = ExtResource("3_lbhrr")
+
+[node name="health" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(124, 31)
+sprite_frames = SubResource("SpriteFrames_rysoc")
+animation = &"10"
+
+[node name="light" type="Label" parent="CanvasLayer"]
+offset_left = 45.0
+offset_right = 85.0
+offset_bottom = 23.0
+text = "Light"
+
+[node name="stats" type="Label" parent="CanvasLayer"]
+offset_left = 4.0
+offset_top = 39.0
+offset_right = 148.0
+offset_bottom = 88.0
+text = "Sparks collected: 0
+Score: 0"
+
+[node name="highscore" type="Label" parent="CanvasLayer"]
+offset_left = 1000.0
+offset_top = 1.0
+offset_right = 1152.0
+offset_bottom = 50.0
+text = "THE FADING EMBER
+HIGH SCORE: 0"
+horizontal_alignment = 2

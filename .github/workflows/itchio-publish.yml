@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ITCHIO_USERNAME: Anotida1
-      ITCHIO_GAME: your_game_ame_here
+      ITCHIO_GAME: the-fading-ember
 
     steps:
       - name: Checkout source code

@@ -1,9 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=20 format=3 uid="uid://yicge48108e0"]
 
+[ext_resource type="Script" uid="uid://dy5yakpks2fmt" path="res://script/game.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://b2n1gge5pb7nl" path="res://scenes/floor.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://cqi10aiiieect" path="res://assests/candle.png" id="3_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://dr2lwwl8w3g3k" path="res://assests/health_bar.png" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://cohiqpndtgam" path="res://scenes/enemy.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://cule4an5fo4h6" path="res://scenes/spark.tscn" id="6_p57ef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p57ef"]
 atlas = ExtResource("4_iywne")
@@ -141,6 +144,7 @@ animations = [{
 }]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_u5sy4")
 
 [node name="Floor" parent="." instance=ExtResource("1_yqjtg")]
 position = Vector2(-1, 0)
@@ -169,11 +173,12 @@ offset_right = 85.0
 offset_bottom = 23.0
 text = "Light"
 
-[node name="stats" type="Label" parent="CanvasLayer"]
+[node name="stats" type="RichTextLabel" parent="CanvasLayer"]
 offset_left = 4.0
 offset_top = 39.0
 offset_right = 148.0
 offset_bottom = 88.0
+bbcode_enabled = true
 text = "Sparks collected: 0
 Score: 0"
 
@@ -185,3 +190,14 @@ offset_bottom = 50.0
 text = "THE FADING EMBER
 HIGH SCORE: 0"
 horizontal_alignment = 2
+
+[node name="Enemy" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(201, 51)
+
+[node name="Enemy2" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(207, 153)
+
+[node name="Spark" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(159, 145)
+
+[node name="background" type="AudioStreamPlayer2D" parent="."]

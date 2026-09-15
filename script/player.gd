@@ -4,7 +4,10 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	add_to_group("player")
+
+func _physics_process(_delta: float) -> void:
 
 	# Handle jump.
 	var climb := Input.get_axis("up", "down")
@@ -25,3 +28,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+#func _on_area_2d_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("spark"):
+		#pass

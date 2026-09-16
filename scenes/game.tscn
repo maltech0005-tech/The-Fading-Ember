@@ -145,16 +145,33 @@ animations = [{
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u5sy4")
+floorSc = ExtResource("1_yqjtg")
 
-[node name="Floor" parent="." instance=ExtResource("1_yqjtg")]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.019607844, 0.019607844, 0.019607844, 1)
+
+[node name="Floor" parent="CanvasModulate" instance=ExtResource("1_yqjtg")]
 position = Vector2(-1, 0)
 
-[node name="Player" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(143, 80)
+[node name="Player" parent="CanvasModulate" instance=ExtResource("2_lnu2h")]
+position = Vector2(349, 176)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="CanvasModulate/Player"]
 position = Vector2(1, 1)
 zoom = Vector2(4, 4)
+limit_left = -768
+limit_top = -512
+limit_right = 768
+limit_bottom = 512
+
+[node name="Enemy" parent="CanvasModulate" instance=ExtResource("5_iywne")]
+position = Vector2(201, 51)
+
+[node name="Enemy2" parent="CanvasModulate" instance=ExtResource("5_iywne")]
+position = Vector2(207, 153)
+
+[node name="Spark" parent="CanvasModulate" instance=ExtResource("6_p57ef")]
+position = Vector2(159, 145)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -172,6 +189,7 @@ offset_left = 45.0
 offset_right = 85.0
 offset_bottom = 23.0
 text = "Light"
+metadata/_edit_use_anchors_ = true
 
 [node name="stats" type="RichTextLabel" parent="CanvasLayer"]
 offset_left = 4.0
@@ -181,6 +199,7 @@ offset_bottom = 88.0
 bbcode_enabled = true
 text = "Sparks collected: 0
 Score: 0"
+metadata/_edit_use_anchors_ = true
 
 [node name="highscore" type="Label" parent="CanvasLayer"]
 offset_left = 1000.0
@@ -190,14 +209,6 @@ offset_bottom = 50.0
 text = "THE FADING EMBER
 HIGH SCORE: 0"
 horizontal_alignment = 2
-
-[node name="Enemy" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(201, 51)
-
-[node name="Enemy2" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(207, 153)
-
-[node name="Spark" parent="." instance=ExtResource("6_p57ef")]
-position = Vector2(159, 145)
+metadata/_edit_use_anchors_ = true
 
 [node name="background" type="AudioStreamPlayer2D" parent="."]

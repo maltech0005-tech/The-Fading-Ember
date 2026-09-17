@@ -144,11 +144,12 @@ animations = [{
 }]
 
 [node name="Game" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_u5sy4")
 floorSc = ExtResource("1_yqjtg")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.019607844, 0.019607844, 0.019607844, 1)
+color = Color(0.019607844, 0.019607844, 0.019607844, 0.7882353)
 
 [node name="Floor" parent="CanvasModulate" instance=ExtResource("1_yqjtg")]
 position = Vector2(-1, 0)
@@ -158,22 +159,303 @@ position = Vector2(349, 176)
 
 [node name="Camera2D" type="Camera2D" parent="CanvasModulate/Player"]
 position = Vector2(1, 1)
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 limit_left = -768
 limit_top = -512
 limit_right = 768
 limit_bottom = 512
 
-[node name="Enemy" parent="CanvasModulate" instance=ExtResource("5_iywne")]
+[node name="Enemies" type="Node2D" parent="CanvasModulate"]
+
+[node name="Enemy" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
 position = Vector2(201, 51)
 
-[node name="Enemy2" parent="CanvasModulate" instance=ExtResource("5_iywne")]
+[node name="Enemy2" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
 position = Vector2(207, 153)
 
-[node name="Spark" parent="CanvasModulate" instance=ExtResource("6_p57ef")]
+[node name="Enemy3" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-561, 398)
+
+[node name="Enemy4" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-659, 404)
+
+[node name="Enemy5" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-433, 353)
+
+[node name="Enemy6" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-534, 295)
+
+[node name="Enemy7" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-633, 266)
+
+[node name="Enemy8" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-631, 49)
+
+[node name="Enemy9" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-267, 307)
+
+[node name="Enemy10" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-193, 392)
+
+[node name="Enemy11" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-107, 254)
+
+[node name="Enemy12" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-58, 122)
+
+[node name="Enemy13" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-138, 42)
+
+[node name="Enemy14" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-366, 100)
+
+[node name="Enemy15" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-405, -87)
+
+[node name="Enemy16" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-600, -79)
+
+[node name="Enemy17" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(58, 404)
+
+[node name="Enemy18" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(173, 307)
+
+[node name="Enemy19" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(248, 334)
+
+[node name="Enemy20" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(421, 359)
+
+[node name="Enemy21" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(454, 86)
+
+[node name="Enemy22" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(218, -105)
+
+[node name="Enemy23" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(610, 22)
+
+[node name="Enemy24" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(596, 275)
+
+[node name="Enemy25" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(643, 420)
+
+[node name="Enemy26" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(460, -89)
+
+[node name="Enemy27" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(636, -133)
+
+[node name="Enemy28" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-471, -350)
+
+[node name="Enemy29" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-594, -259)
+
+[node name="Enemy30" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-619, -446)
+
+[node name="Enemy31" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-171, -237)
+
+[node name="Enemy32" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-27, -138)
+
+[node name="Enemy33" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(37, -428)
+
+[node name="Enemy34" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(246, -389)
+
+[node name="Enemy35" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(439, -422)
+
+[node name="Enemy36" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(197, -245)
+
+[node name="Enemy37" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(523, -264)
+
+[node name="Enemy38" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(673, -405)
+
+[node name="Enemy39" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-512, 121)
+
+[node name="Enemy40" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-228, 151)
+
+[node name="Enemy41" parent="CanvasModulate/Enemies" instance=ExtResource("5_iywne")]
+position = Vector2(-231, -354)
+
+[node name="sparks" type="Node2D" parent="CanvasModulate"]
+
+[node name="Spark" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
 position = Vector2(159, 145)
 
+[node name="Spark2" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(247, 300)
+
+[node name="Spark3" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(155, 421)
+
+[node name="Spark4" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-111, 410)
+
+[node name="Spark5" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-117, 301)
+
+[node name="Spark6" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(12, 383)
+
+[node name="Spark7" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-14, 265)
+
+[node name="Spark8" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-241, 398)
+
+[node name="Spark9" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-305, 276)
+
+[node name="Spark10" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-160, 259)
+
+[node name="Spark11" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-101, 187)
+
+[node name="Spark12" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-487, 355)
+
+[node name="Spark13" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-357, 361)
+
+[node name="Spark14" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-495, 178)
+
+[node name="Spark15" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-598, 260)
+
+[node name="Spark16" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-388, 69)
+
+[node name="Spark17" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-573, 1)
+
+[node name="Spark18" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-684, 295)
+
+[node name="Spark19" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-474, 422)
+
+[node name="Spark20" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-606, 394)
+
+[node name="Spark21" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-454, -91)
+
+[node name="Spark22" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(138, 287)
+
+[node name="Spark23" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(577, 3)
+
+[node name="Spark24" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(388, 385)
+
+[node name="Spark25" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-152, 3)
+
+[node name="Spark26" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(292, -93)
+
+[node name="Spark27" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(553, 274)
+
+[node name="Spark28" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-703, 79)
+
+[node name="Spark29" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-694, -83)
+
+[node name="Spark30" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(14, -27)
+
+[node name="Spark31" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(152, -97)
+
+[node name="Spark32" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(674, 420)
+
+[node name="Spark33" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(698, 174)
+
+[node name="Spark34" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(678, -83)
+
+[node name="Spark35" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-218, -107)
+
+[node name="Spark36" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-269, -234)
+
+[node name="Spark37" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-528, -244)
+
+[node name="Spark38" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-670, -226)
+
+[node name="Spark39" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-97, -248)
+
+[node name="Spark40" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(121, -234)
+
+[node name="Spark41" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(286, -265)
+
+[node name="Spark42" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(477, -215)
+
+[node name="Spark43" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(651, -244)
+
+[node name="Spark44" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(542, -339)
+
+[node name="Spark45" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(170, -349)
+
+[node name="Spark46" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-131, -341)
+
+[node name="Spark47" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-602, -353)
+
+[node name="Spark48" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-464, -379)
+
+[node name="Spark49" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-325, -422)
+
+[node name="Spark50" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(-35, -428)
+
+[node name="Spark51" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(347, -406)
+
+[node name="Spark52" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(643, -424)
+
+[node name="Spark53" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(366, 54)
+
+[node name="Spark54" parent="CanvasModulate/sparks" instance=ExtResource("6_p57ef")]
+position = Vector2(429, 241)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="candle" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(22, 17)
@@ -192,6 +474,8 @@ text = "Light"
 metadata/_edit_use_anchors_ = true
 
 [node name="stats" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.03125
 offset_left = 4.0
 offset_top = 39.0
 offset_right = 148.0
@@ -211,4 +495,61 @@ HIGH SCORE: 0"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="pause" type="Button" parent="CanvasLayer"]
+offset_left = 551.0
+offset_top = 7.0
+offset_right = 577.0
+offset_bottom = 38.0
+text = "||"
+flat = true
+
+[node name="Game_Over" type="Node2D" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Game_Over"]
+offset_right = 1159.0
+offset_bottom = 641.0
+color = Color(0.7891721, 0.7891721, 0.78917205, 0.79607844)
+
+[node name="paused_menu" type="VBoxContainer" parent="CanvasLayer/Game_Over"]
+offset_left = 457.0
+offset_top = 309.0
+offset_right = 615.0
+offset_bottom = 341.0
+
+[node name="Continue" type="Button" parent="CanvasLayer/Game_Over/paused_menu"]
+layout_mode = 2
+text = "Continue"
+
+[node name="Restart" type="Button" parent="CanvasLayer/Game_Over/paused_menu"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Game_Over/paused_menu"]
+layout_mode = 2
+text = "Quit"
+
+[node name="game_over_menu" type="HBoxContainer" parent="CanvasLayer/Game_Over"]
+offset_left = 479.0
+offset_top = 301.0
+offset_right = 590.0
+offset_bottom = 332.0
+alignment = 1
+
+[node name="Restart" type="Button" parent="CanvasLayer/Game_Over/game_over_menu"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Game_Over/game_over_menu"]
+layout_mode = 2
+text = "Quit"
+
 [node name="background" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="CanvasLayer/Game_Over/paused_menu/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Game_Over/paused_menu/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Game_Over/paused_menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Game_Over/game_over_menu/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Game_Over/game_over_menu/Quit" to="." method="_on_quit_pressed"]

@@ -1,13 +1,18 @@
 extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $sprite
+@onready var point_light_2d: PointLight2D = $sprite/PointLight2D
 
 const SPEED = 150.0
+var current_light: float=1.0
 
 func _ready() -> void:
 	add_to_group("player")
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if current_light>0.0:
+		current_light-=0.05*delta
+		point_light_2d.texture_scale=current_light
 
 	# Handle jump.
 	var climb := Input.get_axis("up", "down")
@@ -28,7 +33,3 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
-#func _on_area_2d_body_entered(body: Node2D) -> void:
-	#if body.is_in_group("spark"):
-		#pass

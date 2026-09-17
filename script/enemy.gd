@@ -8,6 +8,7 @@ extends CharacterBody2D
 var knockback_velocity := Vector2.ZERO
 var repath_timer :float = 0.0
 var player = null
+var player_in_range = false
 
 
 func _ready() -> void:
@@ -20,7 +21,7 @@ func _ready() -> void:
 	get_player()
 
 func _physics_process(delta: float) -> void:	
-	if player:
+	if player and player_in_range:
 		repath_timer+=delta
 		if repath_timer >= repath_interval:
 			agent.target_position = player.global_position
@@ -42,3 +43,11 @@ func get_player():
 func apply_knockback(source_position: Vector2, strength: float) -> void:
 	var dir := (global_position - source_position).normalized()
 	knockback_velocity = dir * strength
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		player_in_range=true
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		player_in_range=false

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ckhu3xsy78h01"]
+
+[node name="Settings" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(9.564102, 5.388889)
+color = Color(0.11366529, 0.11366529, 0.113665275, 1)
+
+[node name="options" type="MenuButton" parent="."]
+offset_left = 70.0
+offset_top = 26.0
+offset_right = 140.0
+offset_bottom = 57.0
+text = "Options"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+offset_left = 306.0
+offset_top = 27.0
+offset_right = 338.0
+offset_bottom = 47.0
+
+[node name="resolution" type="Button" parent="OptionButton"]
+layout_mode = 0
+offset_left = -57.0
+offset_top = 16.0
+offset_right = 31.0
+offset_bottom = 47.0
+text = "resolution"
+alignment = 0
+icon_alignment = 2
+
+[node name="audio" type="Button" parent="OptionButton"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 43.0
+offset_right = 28.0
+offset_bottom = 74.0
+text = "audio"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_right = 8.0
+offset_bottom = 16.0
+
+[node name="HSlider2" type="HSlider" parent="."]
+offset_right = 8.0
+offset_bottom = 16.0

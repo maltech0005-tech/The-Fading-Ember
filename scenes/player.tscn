@@ -34,6 +34,7 @@ fill_to = Vector2(0.5, 0)
 radius = 16.124516
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 82.07501
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
@@ -43,6 +44,7 @@ position = Vector2(-3, 9)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
 
 [node name="PointLight2D" type="PointLight2D" parent="sprite"]
+position = Vector2(-0.27592468, -7.1502104)
 texture = SubResource("GradientTexture2D_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -51,6 +53,8 @@ shape = SubResource("CircleShape2D_qhqgy")
 
 [node name="range" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
-position = Vector2(-3, 1.5)
+[node name="collide_range" type="CollisionShape2D" parent="range"]
+position = Vector2(-3.067894, 1.9191332)
 shape = SubResource("CircleShape2D_g2els")
+
+[connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]

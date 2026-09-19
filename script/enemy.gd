@@ -4,12 +4,17 @@ extends CharacterBody2D
 @export var move_speed := 30.0
 @export var repath_interval := 0.5
 @export var knockback_decay := 0.1
+@onready var sprite: AnimatedSprite2D = $sprite
 
 var knockback_velocity := Vector2.ZERO
 var repath_timer :float = 0.0
 var player = null
 var player_in_range = false
 
+@onready var body_collision: CollisionShape2D = $body_collision
+@onready var area_collision: CollisionShape2D = $Area2D/area_collision
+@onready var death_timer: Timer = $death_timer
+@onready var revival_timer: Timer = $revival_timer
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -51,3 +56,21 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range=false
+
+func die():
+	sprite.play("dead")
+	body_collision.set_deferred("disabled", true)
+	area_collision.set_deferred("disabled", true)
+	velocity=Vector2.ZERO
+	death_timer.start(1)
+	
+func _on_death_timer_timeout() -> void:
+	sprite.visible=false
+	revival_timer.start(1)
+
+func _on_revival_timer_timeout() -> void:
+	sprite.play("alive")
+	sprite.visible=true
+	body_collision.set_deferred("disabled", false)
+	area_collision.set_deferred("disabled", false)
+	sprite.visible=true

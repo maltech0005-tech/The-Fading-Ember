@@ -50,7 +50,7 @@ func check_life():
 		health.play("0")
 	
 func game_over():
-	if life<0:
+	if life==0:
 		gameover.visible=true
 		paused_menu.visible=false
 		game_over_menu.visible=true

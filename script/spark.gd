@@ -1,6 +1,7 @@
 extends Area2D
 var player = null
 @onready var timer: Timer = $Timer
+@onready var collision1: CollisionShape2D = $CollisionShape2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,4 +19,12 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			player.current_light=player.current_light+0.2
 		Gamemanager.sparks+=1
-		queue_free()
+		collision1.set_deferred("disabled", true)
+		visible=false
+		timer.start(15)
+
+func _on_timer_timeout() -> void:
+	collision1.set_deferred("disabled", false)
+	visible=true
+	
+	

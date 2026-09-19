@@ -57,4 +57,7 @@ shape = SubResource("CircleShape2D_qhqgy")
 position = Vector2(-3.067894, 1.9191332)
 shape = SubResource("CircleShape2D_g2els")
 
+[node name="respawn_enemy" type="Timer" parent="."]
+
 [connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
+[connection signal="timeout" from="respawn_enemy" to="." method="_on_respawn_enemy_timeout"]

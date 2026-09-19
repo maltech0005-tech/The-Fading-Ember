@@ -3,17 +3,21 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var point_light_2d: PointLight2D = $sprite/PointLight2D
 @onready var collide_range: CollisionShape2D = $range/collide_range
+@onready var respawn_enemy: Timer = $respawn_enemy
+
 
 var collision_radius:float=88.0
 const SPEED = 150.0
 var current_light: float=1.0
 
 var enemy = null
+var game=null
+var enemy_pos_init:Vector2
 
 func _ready() -> void:
 	add_to_group("player")
-	enemy=get_tree().get_first_node_in_group('enemies')
-	
+	game=get_tree().get_first_node_in_group("game")
+	enemy=get_tree().get_first_node_in_group("enemies")
 
 func _physics_process(delta: float) -> void:
 	if current_light-0.05*delta<0.0:
@@ -48,4 +52,14 @@ func _on_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.die()
 		current_light-=0.1
+		enemy_pos_init=body.intial_pos
+		respawn_enemy.start(3)
 		
+func _on_respawn_enemy_timeout() -> void:
+	enemy=get_tree().get_first_node_in_group("enemies")
+	game=get_tree().get_first_node_in_group("game")
+	game.respawn()
+	if enemy:
+		enemy.queue_free()
+	
+	

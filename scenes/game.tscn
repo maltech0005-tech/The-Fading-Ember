@@ -147,6 +147,7 @@ animations = [{
 process_mode = 1
 script = ExtResource("1_u5sy4")
 floorSc = ExtResource("1_yqjtg")
+enemy_scene = ExtResource("5_iywne")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.019607844, 0.019607844, 0.019607844, 0.7882353)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://ckhu3xsy78h01"]
+[gd_scene load_steps=19 format=4 uid="uid://ckhu3xsy78h01"]
 
 [ext_resource type="Script" uid="uid://dr6d0yerpkamj" path="res://script/settings.gd" id="1_5p8wc"]
 [ext_resource type="Texture2D" uid="uid://m6nmookv05gk" path="res://assests/tile.png" id="2_f4mfi"]
@@ -84,6 +84,13 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g033"]
+bg_color = Color(0.05490196, 0.4862745, 0.654902, 0.5019608)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ppmf"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 0.79607844)
@@ -191,6 +198,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_83j8s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gjs24")
 theme_override_styles/hover = SubResource("StyleBoxFlat_am25x")
 theme_override_styles/focus = SubResource("StyleBoxFlat_uhhto")
+selected = 0
 item_count = 3
 popup/item_0/text = "Select Resolution"
 popup/item_0/id = 2
@@ -198,6 +206,13 @@ popup/item_1/text = "Fullscreen"
 popup/item_1/id = 0
 popup/item_2/text = "Windowed"
 popup/item_2/id = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 83.0
+offset_top = 48.0
+offset_right = 463.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1g033")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 95.0
@@ -218,7 +233,7 @@ horizontal_alignment = 1
 offset_left = 103.0
 offset_top = 103.0
 offset_right = 440.2
-offset_bottom = 240.0
+offset_bottom = 243.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_f4mfi")
 
 [node name="Main_Container" type="VBoxContainer" parent="."]
@@ -227,57 +242,69 @@ offset_top = 107.79999
 offset_right = 440.74054
 offset_bottom = 275.8
 
-[node name="Audio_Volumes" type="VBoxContainer" parent="Main_Container"]
+[node name="Audio_Volumes" type="HBoxContainer" parent="Main_Container"]
 layout_mode = 2
 
-[node name="MasterV_container" type="HBoxContainer" parent="Main_Container/Audio_Volumes"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_Container/Audio_Volumes"]
 layout_mode = 2
 
-[node name="MasterV_label" type="Label" parent="Main_Container/Audio_Volumes/MasterV_container"]
+[node name="MasterV_label" type="Label" parent="Main_Container/Audio_Volumes/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
 text = "Master Volume  "
 
-[node name="MasterV_slider" type="HSlider" parent="Main_Container/Audio_Volumes/MasterV_container"]
-layout_mode = 2
-
-[node name="MasterV_amnt" type="Label" parent="Main_Container/Audio_Volumes/MasterV_container"]
-layout_mode = 2
-text = "100"
-
-[node name="MusicV_container" type="HBoxContainer" parent="Main_Container/Audio_Volumes"]
-layout_mode = 2
-
-[node name="MusicV_label" type="Label" parent="Main_Container/Audio_Volumes/MusicV_container"]
+[node name="MusicV_label" type="Label" parent="Main_Container/Audio_Volumes/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
 text = "Music Volume     "
 
-[node name="MusicV_slider" type="HSlider" parent="Main_Container/Audio_Volumes/MusicV_container"]
-layout_mode = 2
-
-[node name="MusicV_amnt" type="Label" parent="Main_Container/Audio_Volumes/MusicV_container"]
-layout_mode = 2
-text = "100"
-
-[node name="SFXV_container" type="HBoxContainer" parent="Main_Container/Audio_Volumes"]
-layout_mode = 2
-
-[node name="SFXV_label" type="Label" parent="Main_Container/Audio_Volumes/SFXV_container"]
+[node name="SFXV_label" type="Label" parent="Main_Container/Audio_Volumes/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
 text = "SFX Volume         "
 
-[node name="SFXV_slider" type="HSlider" parent="Main_Container/Audio_Volumes/SFXV_container"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main_Container/Audio_Volumes"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MasterV_container" type="HBoxContainer" parent="Main_Container/Audio_Volumes/VBoxContainer2"]
 layout_mode = 2
 
-[node name="SFXV_amnt" type="Label" parent="Main_Container/Audio_Volumes/SFXV_container"]
+[node name="MasterV_slider" type="HSlider" parent="Main_Container/Audio_Volumes/VBoxContainer2/MasterV_container"]
+custom_minimum_size = Vector2(110, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterV_amnt" type="Label" parent="Main_Container/Audio_Volumes/VBoxContainer2/MasterV_container"]
 layout_mode = 2
 text = "100"
 
-[node name="CheckBox" type="CheckBox" parent="Main_Container/Audio_Volumes"]
+[node name="MusicV_container" type="HBoxContainer" parent="Main_Container/Audio_Volumes/VBoxContainer2"]
 layout_mode = 2
-text = "Mute All"
+
+[node name="MusicV_slider" type="HSlider" parent="Main_Container/Audio_Volumes/VBoxContainer2/MusicV_container"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+
+[node name="MusicV_amnt" type="Label" parent="Main_Container/Audio_Volumes/VBoxContainer2/MusicV_container"]
+layout_mode = 2
+text = "100"
+
+[node name="SFXV_container" type="HBoxContainer" parent="Main_Container/Audio_Volumes/VBoxContainer2"]
+layout_mode = 2
+
+[node name="SFXV_slider" type="HSlider" parent="Main_Container/Audio_Volumes/VBoxContainer2/SFXV_container"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+
+[node name="SFXV_amnt" type="Label" parent="Main_Container/Audio_Volumes/VBoxContainer2/SFXV_container"]
+layout_mode = 2
+text = "100"
+
+[node name="mute" type="CheckBox" parent="Main_Container"]
+layout_mode = 2
+text = "Mute"
 
 [node name="nav" type="HBoxContainer" parent="Main_Container"]
 layout_mode = 2
@@ -298,5 +325,6 @@ texture = SubResource("GradientTexture2D_es4n0")
 layout_mode = 2
 text = "Back"
 
+[connection signal="toggled" from="Main_Container/mute" to="." method="_on_mute_toggled"]
 [connection signal="pressed" from="Main_Container/nav/apply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="Main_Container/nav/back" to="." method="_on_back_pressed"]

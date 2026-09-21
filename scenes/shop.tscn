@@ -1,10 +1,14 @@
-[gd_scene load_steps=23 format=4 uid="uid://bdwr6n7t5bnd"]
+[gd_scene load_steps=26 format=4 uid="uid://bdwr6n7t5bnd"]
 
 [ext_resource type="Texture2D" uid="uid://m6nmookv05gk" path="res://assests/tile.png" id="1_1l46r"]
 [ext_resource type="Script" uid="uid://chposeywpt157" path="res://script/shop.gd" id="1_032fp"]
 [ext_resource type="Texture2D" uid="uid://bka68ah7u3xbm" path="res://assests/rock.png" id="2_032fp"]
 [ext_resource type="PackedScene" uid="uid://dq8nu6cdd5l21" path="res://scenes/main_menu_enemy.tscn" id="3_2fc2m"]
 [ext_resource type="Texture2D" uid="uid://b7nyvlra563pv" path="res://assests/spark.png" id="5_2fc2m"]
+[ext_resource type="Texture2D" uid="uid://cqi10aiiieect" path="res://assests/candle.png" id="6_m4ofw"]
+[ext_resource type="Texture2D" uid="uid://ckslxpdfm8wlw" path="res://assests/invincibility.png" id="7_heatd"]
+[ext_resource type="Texture2D" uid="uid://pc267j6rrrha" path="res://assests/spectra_blast.png" id="8_1v8qu"]
+[ext_resource type="Texture2D" uid="uid://djtvcg7rwp1h1" path="res://assests/Revival.png" id="9_44xle"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8r1wq"]
 texture = ExtResource("1_1l46r")
@@ -38,15 +42,12 @@ texture = ExtResource("2_032fp")
 sources/0 = SubResource("TileSetAtlasSource_8r1wq")
 sources/1 = SubResource("TileSetAtlasSource_ajxib")
 
-[sub_resource type="Gradient" id="Gradient_2fc2m"]
-offsets = PackedFloat32Array(0, 0.990991, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.954955, 0.954955, 0.954955, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8r1wq"]
-gradient = SubResource("Gradient_2fc2m")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.4654088, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fc2m"]
+bg_color = Color(0.05490196, 0.4862745, 0.654902, 0.5019608)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l46r"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 0.79607844)
@@ -195,22 +196,17 @@ offset_right = 545.0
 offset_bottom = 310.0
 color = Color(0.18431373, 0.18431373, 0.18431373, 0.827451)
 
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 83.0
+offset_top = 29.0
+offset_right = 463.0
+offset_bottom = 298.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2fc2m")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.115, 2.115)
 limit_left = 0
 limit_top = 0
-
-[node name="fading_edge" type="ColorRect" parent="."]
-offset_left = 84.0
-offset_top = 31.0
-offset_right = 462.0
-offset_bottom = 295.0
-color = Color(0.12156863, 0.8117647, 0.8980392, 0.34509805)
-
-[node name="PointLight2D" type="PointLight2D" parent="fading_edge"]
-position = Vector2(189.49998, 132.5)
-scale = Vector2(6.0156245, 4.203125)
-texture = SubResource("GradientTexture2D_8r1wq")
 
 [node name="Shop_label" type="RichTextLabel" parent="."]
 offset_left = 95.0
@@ -249,22 +245,22 @@ layout_mode = 2
 [node name="Instant_Refill_label" type="Label" parent="Main_Container/PowerUps/PowerUps_labels"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
-text = "Instant Refill         "
+text = "    Instant Refill     "
 
 [node name="Invincibility_label" type="Label" parent="Main_Container/PowerUps/PowerUps_labels"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
-text = "Invincibility            "
+text = "    Invincibility "
 
 [node name="Spectra_Blast_label" type="Label" parent="Main_Container/PowerUps/PowerUps_labels"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
-text = "Spetra Blast  "
+text = "    Spetra Blast"
 
 [node name="Revival_label" type="Label" parent="Main_Container/PowerUps/PowerUps_labels"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
-text = "Revival     "
+text = "    Revival   "
 
 [node name="Buy_column" type="VBoxContainer" parent="Main_Container/PowerUps"]
 layout_mode = 2
@@ -380,6 +376,26 @@ position = Vector2(191.79997, 16.700012)
 scale = Vector2(1.375, 1.2916666)
 texture = ExtResource("5_2fc2m")
 
+[node name="instant_refill" type="Sprite2D" parent="Main_Container"]
+position = Vector2(5, 10)
+scale = Vector2(0.6875, 0.7083333)
+texture = ExtResource("6_m4ofw")
+
+[node name="invincibility" type="Sprite2D" parent="Main_Container"]
+position = Vector2(6.0000305, 48)
+scale = Vector2(1.375, 1.5)
+texture = ExtResource("7_heatd")
+
+[node name="spectra_blast" type="Sprite2D" parent="Main_Container"]
+position = Vector2(7.0000153, 83)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("8_1v8qu")
+
+[node name="revival" type="Sprite2D" parent="Main_Container"]
+position = Vector2(7.0000305, 109.499985)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("9_44xle")
+
 [node name="Inventory" type="Node2D" parent="."]
 
 [node name="Button" type="Label" parent="Inventory"]
@@ -390,24 +406,44 @@ offset_bottom = 101.0
 text = "0"
 
 [node name="Button2" type="Label" parent="Inventory"]
-offset_left = 206.0
+offset_left = 208.0
 offset_top = 78.0
-offset_right = 253.0
+offset_right = 255.0
 offset_bottom = 101.0
 text = "0"
 
 [node name="Button3" type="Label" parent="Inventory"]
-offset_left = 260.0
+offset_left = 297.0
 offset_top = 78.0
-offset_right = 307.0
+offset_right = 344.0
 offset_bottom = 101.0
 text = "0"
 
 [node name="Button4" type="Label" parent="Inventory"]
-offset_left = 317.0
+offset_left = 393.0
 offset_top = 78.0
-offset_right = 364.0
+offset_right = 440.0
 offset_bottom = 101.0
 text = "0"
+
+[node name="instant_refill" type="Sprite2D" parent="Inventory"]
+position = Vector2(117, 83)
+scale = Vector2(0.6875, 0.7083333)
+texture = ExtResource("6_m4ofw")
+
+[node name="invincibility" type="Sprite2D" parent="Inventory"]
+position = Vector2(194.00002, 84)
+scale = Vector2(1.375, 1.5)
+texture = ExtResource("7_heatd")
+
+[node name="spectra_blast" type="Sprite2D" parent="Inventory"]
+position = Vector2(285, 86)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("8_1v8qu")
+
+[node name="revival" type="Sprite2D" parent="Inventory"]
+position = Vector2(379, 80.5)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("9_44xle")
 
 [connection signal="pressed" from="Main_Container/nav/back" to="." method="_on_back_pressed"]

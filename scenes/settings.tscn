@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bka68ah7u3xbm" path="res://assests/rock.png" id="3_es4n0"]
 [ext_resource type="PackedScene" uid="uid://dq8nu6cdd5l21" path="res://scenes/main_menu_enemy.tscn" id="4_gis3k"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_83j8s"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4mfi"]
 texture = ExtResource("2_f4mfi")
 0:0/0 = 0
 1:0/0 = 0
@@ -24,7 +24,7 @@ texture = ExtResource("2_f4mfi")
 2:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gjs24"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_es4n0"]
 texture = ExtResource("3_es4n0")
 0:0/0 = 0
 1:0/0 = 0
@@ -34,8 +34,8 @@ texture = ExtResource("3_es4n0")
 1:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_am25x"]
-sources/0 = SubResource("TileSetAtlasSource_83j8s")
-sources/1 = SubResource("TileSetAtlasSource_gjs24")
+sources/0 = SubResource("TileSetAtlasSource_f4mfi")
+sources/1 = SubResource("TileSetAtlasSource_es4n0")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83j8s"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
@@ -128,11 +128,11 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="Gradient" id="Gradient_f4mfi"]
+[sub_resource type="Gradient" id="Gradient_gis3k"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_es4n0"]
-gradient = SubResource("Gradient_f4mfi")
+gradient = SubResource("Gradient_gis3k")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -201,10 +201,18 @@ popup/item_2/id = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 95.0
-offset_top = 95.0
+offset_top = 60.0
 offset_right = 449.0
 offset_bottom = 286.0
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_4ppmf")
+bbcode_enabled = true
+text = "[b][i]Settings[/i][/b]"
+horizontal_alignment = 1
 
 [node name="mini_border" type="RichTextLabel" parent="."]
 offset_left = 103.0

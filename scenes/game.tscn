@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=22 format=3 uid="uid://yicge48108e0"]
 
 [ext_resource type="Script" uid="uid://dy5yakpks2fmt" path="res://script/game.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://b2n1gge5pb7nl" path="res://scenes/floor.tscn" id="1_yqjtg"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dr2lwwl8w3g3k" path="res://assests/health_bar.png" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://cohiqpndtgam" path="res://scenes/enemy.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cule4an5fo4h6" path="res://scenes/spark.tscn" id="6_p57ef"]
+[ext_resource type="AudioStream" uid="uid://cxyo6emdgao1f" path="res://assests/game_bg.mp3" id="8_gee14"]
+[ext_resource type="AudioStream" uid="uid://dwneqxav1a1nl" path="res://assests/player_death.mp3" id="9_0tnpc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p57ef"]
 atlas = ExtResource("4_iywne")
@@ -547,6 +549,11 @@ layout_mode = 2
 text = "Quit"
 
 [node name="background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_gee14")
+autoplay = true
+
+[node name="death sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_0tnpc")
 
 [connection signal="pressed" from="CanvasLayer/pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="CanvasLayer/Game_Over/paused_menu/Continue" to="." method="_on_continue_pressed"]

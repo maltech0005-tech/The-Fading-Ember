@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://ckhu3xsy78h01"]
+[gd_scene load_steps=22 format=4 uid="uid://ckhu3xsy78h01"]
 
 [ext_resource type="Script" uid="uid://dr6d0yerpkamj" path="res://script/settings.gd" id="1_5p8wc"]
 [ext_resource type="Texture2D" uid="uid://m6nmookv05gk" path="res://assests/tile.png" id="2_f4mfi"]
 [ext_resource type="Texture2D" uid="uid://bka68ah7u3xbm" path="res://assests/rock.png" id="3_es4n0"]
 [ext_resource type="PackedScene" uid="uid://dq8nu6cdd5l21" path="res://scenes/main_menu_enemy.tscn" id="4_gis3k"]
+[ext_resource type="AudioStream" uid="uid://xcqq0fkl2c5t" path="res://assests/mainmenu_bg.mp3" id="5_es4n0"]
+[ext_resource type="AudioStream" uid="uid://dwneqxav1a1nl" path="res://assests/player_death.mp3" id="6_gis3k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4mfi"]
 texture = ExtResource("2_f4mfi")
@@ -144,6 +146,10 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01roj"]
+bg_color = Color(0.9832035, 0.98592156, 0.98646563, 1)
+corner_radius_top_left = 5
+
 [node name="Settings" type="Node2D"]
 script = ExtResource("1_5p8wc")
 
@@ -179,7 +185,8 @@ position = Vector2(114, 229)
 position = Vector2(404, 210)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_right = 545.0
+offset_left = 3736.0
+offset_right = 4281.0
 offset_bottom = 310.0
 color = Color(0.18431373, 0.18431373, 0.18431373, 0.827451)
 
@@ -199,13 +206,19 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gjs24")
 theme_override_styles/hover = SubResource("StyleBoxFlat_am25x")
 theme_override_styles/focus = SubResource("StyleBoxFlat_uhhto")
 selected = 0
-item_count = 3
+item_count = 6
 popup/item_0/text = "Select Resolution"
 popup/item_0/id = 2
 popup/item_1/text = "Fullscreen"
 popup/item_1/id = 0
-popup/item_2/text = "Windowed"
+popup/item_2/text = "1280 x 720"
 popup/item_2/id = 1
+popup/item_3/text = "1600 x 900"
+popup/item_3/id = 3
+popup/item_4/text = "1920 x 1080"
+popup/item_4/id = 4
+popup/item_5/text = "2560 x 1440"
+popup/item_5/id = 5
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 83.0
@@ -274,7 +287,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(110, 0)
 layout_direction = 2
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="MasterV_amnt" type="Label" parent="Main_Container/Audio_Volumes/VBoxContainer2/MasterV_container"]
 layout_mode = 2
@@ -325,6 +337,37 @@ texture = SubResource("GradientTexture2D_es4n0")
 layout_mode = 2
 text = "Back"
 
+[node name="bg_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_es4n0")
+volume_db = -24.0
+autoplay = true
+parameters/looping = true
+
+[node name="death sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_gis3k")
+
+[node name="toast" type="Label" parent="."]
+visible = false
+z_index = 10
+offset_left = 213.0
+offset_top = 275.0
+offset_right = 342.0
+offset_bottom = 298.0
+theme_override_colors/font_color = Color(0.11764706, 0.13725491, 0.14117648, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_01roj")
+text = "Changes Applied"
+
+[node name="toast_timer" type="Timer" parent="."]
+
+[node name="death sound2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(213, 275)
+stream = ExtResource("6_gis3k")
+
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="value_changed" from="Main_Container/Audio_Volumes/VBoxContainer2/MasterV_container/MasterV_slider" to="." method="_on_master_v_slider_value_changed"]
+[connection signal="value_changed" from="Main_Container/Audio_Volumes/VBoxContainer2/MusicV_container/MusicV_slider" to="." method="_on_music_v_slider_value_changed"]
+[connection signal="value_changed" from="Main_Container/Audio_Volumes/VBoxContainer2/SFXV_container/SFXV_slider" to="." method="_on_sfxv_slider_value_changed"]
 [connection signal="toggled" from="Main_Container/mute" to="." method="_on_mute_toggled"]
 [connection signal="pressed" from="Main_Container/nav/apply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="Main_Container/nav/back" to="." method="_on_back_pressed"]
+[connection signal="timeout" from="toast_timer" to="." method="_on_toast_timer_timeout"]

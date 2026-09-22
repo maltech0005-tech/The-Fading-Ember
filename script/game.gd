@@ -6,6 +6,11 @@ extends Node2D
 @onready var paused_menu: VBoxContainer = $CanvasLayer/Game_Over/paused_menu
 @onready var game_over_menu: HBoxContainer = $CanvasLayer/Game_Over/game_over_menu
 @export var enemy_scene: PackedScene
+@onready var death_sound: AudioStreamPlayer2D = $"death sound"
+@onready var background: AudioStreamPlayer2D = $background
+
+var bg_sound_value=Gamemanager.background_music_value
+var death_sound_value=Gamemanager.sound_effects_value
 
 var player = null
 var life = 100
@@ -13,7 +18,9 @@ var life = 100
 @onready var stats: RichTextLabel = $CanvasLayer/stats
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	DisplayServer.window_set_size(Gamemanager.screen_size)
 	add_to_group("game")
+	background.volume_db=linear_to_db(Gamemanager.background_music_value/100)
 	gameover.visible=false
 	player  = get_tree().get_first_node_in_group("player")
 	
@@ -51,9 +58,11 @@ func check_life():
 		health.play("1")
 	else:
 		health.play("0")
+		death_sound.play()
 	
 func game_over():
 	if life==0:
+		death_sound.volume_db=linear_to_db(Gamemanager.sound_effects_value/100)
 		gameover.visible=true
 		paused_menu.visible=false
 		game_over_menu.visible=true
@@ -81,3 +90,6 @@ func _on_restart_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().paused=false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func update_sound():
+	background.volume_db=linear_to_db(Gamemanager.background_music_value/100)

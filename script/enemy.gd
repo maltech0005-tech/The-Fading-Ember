@@ -16,6 +16,7 @@ var intial_pos: Vector2
 @onready var body_collision: CollisionShape2D = $body_collision
 @onready var area_collision: CollisionShape2D = $Area2D/area_collision
 @onready var death_timer: Timer = $death_timer
+@onready var death: AudioStreamPlayer2D = $death
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -64,6 +65,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func die():
 	is_dead= true
+	death.volume_db=linear_to_db(Gamemanager.sound_effects_value/100)
+	death.play()
 	sprite.play("dead")
 	body_collision.set_deferred("disabled", true)
 	area_collision.set_deferred("disabled", true)

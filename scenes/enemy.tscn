@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cohiqpndtgam"]
+[gd_scene load_steps=12 format=3 uid="uid://cohiqpndtgam"]
 
 [ext_resource type="Texture2D" uid="uid://d6hcv7mic1ak" path="res://assests/enemy1.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://dobxisu70v4up" path="res://script/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://dqc8c0uvks428" path="res://assests/enemy1_dead.png" id="2_4ra3w"]
+[ext_resource type="AudioStream" uid="uid://px0h5xpbuyu4" path="res://assests/enemy_death.mp3" id="4_5uy6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
 atlas = ExtResource("1_7p1mj")
@@ -73,6 +74,9 @@ visible = false
 shape = SubResource("CircleShape2D_4ra3w")
 
 [node name="death_timer" type="Timer" parent="."]
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5uy6h")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

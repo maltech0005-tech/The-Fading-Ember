@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cule4an5fo4h6"]
+[gd_scene load_steps=5 format=3 uid="uid://cule4an5fo4h6"]
 
 [ext_resource type="Script" uid="uid://boev6nh4720xw" path="res://script/spark.gd" id="1_vit8h"]
 [ext_resource type="Texture2D" uid="uid://b7nyvlra563pv" path="res://assests/spark.png" id="2_1eabr"]
+[ext_resource type="AudioStream" uid="uid://b4ai6hskp0084" path="res://assests/spark_reward.mp3" id="3_1eabr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwls8"]
 radius = 9.0
@@ -16,6 +17,9 @@ shape = SubResource("CircleShape2D_dwls8")
 texture = ExtResource("2_1eabr")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="collected" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1eabr")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

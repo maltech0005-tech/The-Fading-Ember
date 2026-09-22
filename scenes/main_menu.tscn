@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://cx6alhnxr5t2m"]
+[gd_scene load_steps=16 format=4 uid="uid://cx6alhnxr5t2m"]
 
 [ext_resource type="Script" uid="uid://cdyxjhljnqspr" path="res://script/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://m6nmookv05gk" path="res://assests/tile.png" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://bka68ah7u3xbm" path="res://assests/rock.png" id="3_8ln24"]
 [ext_resource type="PackedScene" uid="uid://dq8nu6cdd5l21" path="res://scenes/main_menu_enemy.tscn" id="4_wu84c"]
+[ext_resource type="AudioStream" uid="uid://xcqq0fkl2c5t" path="res://assests/mainmenu_bg.mp3" id="5_8ln24"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqqt6"]
 texture = ExtResource("2_ekxnf")
@@ -161,6 +162,10 @@ text = "QUIT"
 zoom = Vector2(2.115, 2.115)
 limit_left = 0
 limit_top = 0
+
+[node name="bg_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8ln24")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]

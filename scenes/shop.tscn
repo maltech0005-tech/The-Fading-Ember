@@ -271,7 +271,7 @@ layout_mode = 2
 
 [node name="Instant_Refill_amnt" type="Label" parent="Main_Container/PowerUps/Buy_column/Instant_Refill_container"]
 layout_mode = 2
-text = "Cost: 100        "
+text = "Cost: 50          "
 
 [node name="Instant_Refill" type="Button" parent="Main_Container/PowerUps/Buy_column/Instant_Refill_container"]
 layout_mode = 2
@@ -294,7 +294,7 @@ layout_mode = 2
 
 [node name="Invincibility_amnt" type="Label" parent="Main_Container/PowerUps/Buy_column/Invincibility_container"]
 layout_mode = 2
-text = "Cost: 100        "
+text = "Cost: 50          "
 
 [node name="Invincibility" type="Button" parent="Main_Container/PowerUps/Buy_column/Invincibility_container"]
 layout_mode = 2

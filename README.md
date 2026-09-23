@@ -8,6 +8,7 @@
 
 A 2D top-down survival arcade game where you play as a single ember lost in an abyss. Your only weapon and life is your glow.
 ---
+
 ## features
 - Responsive movement
 - Intelligent enemy ai
@@ -15,14 +16,11 @@ A 2D top-down survival arcade game where you play as a single ember lost in an a
 - Sound effects and music
 - Pointlight scaling
 
+
+
 ## Preview
 <p align="center">
 <img src="preview.png">
-</p>
-
-## GamePlay
-<p align="center">
-<video controls src="gameplay.mp4">
 </p>
 
 ## MainMenu
@@ -38,6 +36,11 @@ A 2D top-down survival arcade game where you play as a single ember lost in an a
 ## Shop
 <p align="center">
 <img src="shop.png">
+</p>
+
+## GamePlay
+<p align="center">
+<video controls src="gameplay.mp4">
 </p>
 
 # Controls

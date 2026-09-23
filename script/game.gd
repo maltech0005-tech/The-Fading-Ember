@@ -8,6 +8,7 @@ extends Node2D
 @export var enemy_scene: PackedScene
 @onready var death_sound: AudioStreamPlayer2D = $"death sound"
 @onready var background: AudioStreamPlayer2D = $background
+@onready var highscore: Label = $CanvasLayer/highscore
 
 var bg_sound_value=Gamemanager.background_music_value
 var death_sound_value=Gamemanager.sound_effects_value
@@ -18,6 +19,7 @@ var life = 100
 @onready var stats: RichTextLabel = $CanvasLayer/stats
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Gamemanager.score=0
 	DisplayServer.window_set_size(Gamemanager.screen_size)
 	add_to_group("game")
 	background.volume_db=linear_to_db(Gamemanager.background_music_value/100)
@@ -30,9 +32,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	stats.text="Sparks collected: "+str(Gamemanager.sparks)+"\nScore: "+str(Gamemanager.score)
+	highscore.text="THE FADING EMBER\nHIGH SCORE: "+str(Gamemanager.high_score)
 	if player:
 		life=player.current_light*100
 		check_life()
+	if Input.is_action_just_pressed("pause"):
+		_on_pause_pressed()
+		
+	if Input.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
 	game_over()
 	
 func check_life():
@@ -66,6 +74,7 @@ func game_over():
 		gameover.visible=true
 		paused_menu.visible=false
 		game_over_menu.visible=true
+		Gamemanager.check_and_load_data()
 		get_tree().paused=true
 		
 func respawn():
@@ -93,3 +102,4 @@ func _on_quit_pressed() -> void:
 
 func update_sound():
 	background.volume_db=linear_to_db(Gamemanager.background_music_value/100)
+	

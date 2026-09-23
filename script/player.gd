@@ -51,6 +51,7 @@ func _physics_process(delta: float) -> void:
 func _on_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.die()
+		Gamemanager.score+=1
 		current_light-=0.1
 		enemy_pos_init=body.intial_pos
 		respawn_enemy.start(3)

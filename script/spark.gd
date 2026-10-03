@@ -9,7 +9,6 @@ func _ready() -> void:
 	add_to_group("spark")
 	player = get_tree().get_first_node_in_group("player")
 	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
@@ -23,6 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			player.current_light=player.current_light+0.2
 		Gamemanager.sparks+=1
+		Gamemanager.save_data()
 		collision1.set_deferred("disabled", true)
 		visible=false
 		timer.start(15)
@@ -30,5 +30,3 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	collision1.set_deferred("disabled", false)
 	visible=true
-	
-	

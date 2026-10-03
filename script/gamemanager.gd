@@ -2,6 +2,10 @@ extends Node
 
 const save_path = "user://fading_ember.save"
 @export var sparks: int = 0
+@export var instant_refills: int =0
+@export var invincibilities: int = 0
+@export var spectra_blasts: int = 0
+@export var revivals: int = 0
 @export var score: int = 0
 @export var high_score: int = 0
 @export var background_music_value: float = 100.0
@@ -24,6 +28,10 @@ func _process(_delta: float) -> void:
 func save_data():
 	var data_dict = {
 		"sparks": sparks,
+		"instant_refills": instant_refills,
+		"invincibilities": invincibilities,
+		"spectra_blasts": spectra_blasts,
+		"revivals": revivals,
 		"score": score,
 		"high_score": high_score,
 		"background_music_value": background_music_value,
@@ -58,6 +66,10 @@ func load_data():
 	if check_error==OK:
 		var data_dict=json.data
 		sparks = data_dict.get("sparks", sparks)
+		instant_refills = data_dict.get("instant_refills", instant_refills)
+		invincibilities = data_dict.get("invincibilities", invincibilities)
+		spectra_blasts = data_dict.get('spectra_blasts', spectra_blasts)
+		revivals = data_dict.get("revivals", revivals)
 		score = data_dict.get("score", score)
 		high_score = data_dict.get("high_score", high_score)
 		background_music_value = data_dict.get("background_music_value", background_music_value)

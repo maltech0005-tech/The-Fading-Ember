@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bdwr6n7t5bnd"]
+[gd_scene load_steps=27 format=4 uid="uid://bdwr6n7t5bnd"]
 
 [ext_resource type="Texture2D" uid="uid://m6nmookv05gk" path="res://assests/tile.png" id="1_1l46r"]
 [ext_resource type="Script" uid="uid://chposeywpt157" path="res://script/shop.gd" id="1_032fp"]
@@ -156,6 +156,10 @@ bg_color = Color(0.011764706, 0.33333334, 0.56078434, 0.827451)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gobkm"]
+bg_color = Color(0.9832035, 0.98592156, 0.98646563, 1)
+corner_radius_top_left = 5
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_032fp")
@@ -372,7 +376,7 @@ layout_mode = 2
 text = "Back"
 
 [node name="Sprite2D" type="Sprite2D" parent="Main_Container/nav"]
-position = Vector2(191.79997, 16.700012)
+position = Vector2(196.79997, 16.700012)
 scale = Vector2(1.375, 1.2916666)
 texture = ExtResource("5_2fc2m")
 
@@ -398,28 +402,28 @@ texture = ExtResource("9_44xle")
 
 [node name="Inventory" type="Node2D" parent="."]
 
-[node name="Button" type="Label" parent="Inventory"]
+[node name="Instant_refills" type="Label" parent="Inventory"]
 offset_left = 131.0
 offset_top = 78.0
 offset_right = 178.0
 offset_bottom = 101.0
 text = "0"
 
-[node name="Button2" type="Label" parent="Inventory"]
+[node name="Invincibilities" type="Label" parent="Inventory"]
 offset_left = 208.0
 offset_top = 78.0
 offset_right = 255.0
 offset_bottom = 101.0
 text = "0"
 
-[node name="Button3" type="Label" parent="Inventory"]
+[node name="spectra_blasts" type="Label" parent="Inventory"]
 offset_left = 297.0
 offset_top = 78.0
 offset_right = 344.0
 offset_bottom = 101.0
 text = "0"
 
-[node name="Button4" type="Label" parent="Inventory"]
+[node name="revivals" type="Label" parent="Inventory"]
 offset_left = 393.0
 offset_top = 78.0
 offset_right = 440.0
@@ -446,4 +450,22 @@ position = Vector2(379, 80.5)
 scale = Vector2(1.375, 1.375)
 texture = ExtResource("9_44xle")
 
+[node name="toast" type="Label" parent="."]
+visible = false
+z_index = 10
+offset_left = 202.0
+offset_top = 275.0
+offset_right = 355.0
+offset_bottom = 298.0
+theme_override_colors/font_color = Color(0.11764706, 0.13725491, 0.14117648, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gobkm")
+text = "Insufficient Balance"
+
+[node name="toast_timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Main_Container/PowerUps/Buy_column/Instant_Refill_container/Instant_Refill" to="." method="_on_instant_refill_pressed"]
+[connection signal="pressed" from="Main_Container/PowerUps/Buy_column/Invincibility_container/Invincibility" to="." method="_on_invincibility_pressed"]
+[connection signal="pressed" from="Main_Container/PowerUps/Buy_column/Spectra_Blast_container/Spectra_Blast" to="." method="_on_spectra_blast_pressed"]
+[connection signal="pressed" from="Main_Container/PowerUps/Buy_column/Revival_containerx/Revival" to="." method="_on_revival_pressed"]
 [connection signal="pressed" from="Main_Container/nav/back" to="." method="_on_back_pressed"]
+[connection signal="timeout" from="toast_timer" to="." method="_on_toast_timer_timeout"]

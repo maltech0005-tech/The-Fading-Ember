@@ -13,7 +13,6 @@ var invincibilities=Gamemanager.invincibilities
 var spectra_blasts=Gamemanager.spectra_blasts
 var revivals=Gamemanager.revivals
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_balance()

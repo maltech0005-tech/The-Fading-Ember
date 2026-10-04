@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=29 format=3 uid="uid://yicge48108e0"]
 
 [ext_resource type="Script" uid="uid://dy5yakpks2fmt" path="res://script/game.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://b2n1gge5pb7nl" path="res://scenes/floor.tscn" id="1_yqjtg"]
@@ -12,6 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://dwneqxav1a1nl" path="res://assests/player_death.mp3" id="9_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://pc267j6rrrha" path="res://assests/spectra_blast.png" id="9_kvuet"]
 [ext_resource type="Texture2D" uid="uid://djtvcg7rwp1h1" path="res://assests/Revival.png" id="10_trtic"]
+[ext_resource type="AudioStream" uid="uid://djrmnrp65twsg" path="res://assests/refill_sound.mp3" id="13_trtic"]
+[ext_resource type="AudioStream" uid="uid://cvxretob1y0rd" path="res://assests/invincible_sound.mp3" id="14_ca42v"]
+[ext_resource type="AudioStream" uid="uid://cewj0tx1o763p" path="res://assests/blast_sound.mp3" id="15_ir15t"]
+[ext_resource type="AudioStream" uid="uid://byxkswjy2l7dm" path="res://assests/revive_sound.mp3" id="16_ca42v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p57ef"]
 atlas = ExtResource("4_iywne")
@@ -560,6 +564,7 @@ text = "0"
 
 [node name="Game_Over" type="Node2D" parent="CanvasLayer"]
 process_mode = 3
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Game_Over"]
 offset_right = 1159.0
@@ -618,9 +623,24 @@ metadata/_edit_group_ = true
 [node name="background" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_gee14")
 autoplay = true
+parameters/looping = true
 
 [node name="death sound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("9_0tnpc")
+
+[node name="refill_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_trtic")
+
+[node name="invincible_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ca42v")
+
+[node name="blast_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_ir15t")
+
+[node name="revive_sound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("16_ca42v")
 
 [connection signal="pressed" from="CanvasLayer/pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="CanvasLayer/Game_Over/paused_menu/Continue" to="." method="_on_continue_pressed"]

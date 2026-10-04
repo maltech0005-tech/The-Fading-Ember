@@ -166,6 +166,7 @@ limit_top = 0
 [node name="bg_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_8ln24")
 autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]

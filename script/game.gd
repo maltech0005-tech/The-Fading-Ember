@@ -16,6 +16,10 @@ extends Node2D
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 @onready var revive: Button = $CanvasLayer/Game_Over/game_over_menu/revive
 @onready var gameover_label: Label = $CanvasLayer/Game_Over/GameOver
+@onready var refill_sound: AudioStreamPlayer2D = $refill_sound
+@onready var invincible_sound: AudioStreamPlayer2D = $invincible_sound
+@onready var blast_sound: AudioStreamPlayer2D = $blast_sound
+@onready var revive_sound: AudioStreamPlayer2D = $revive_sound
 
 var bg_sound_value=Gamemanager.background_music_value
 var death_sound_value=Gamemanager.sound_effects_value
@@ -94,6 +98,8 @@ func check_life():
 func game_over():
 	if life==0:
 		death_sound.volume_db=linear_to_db(Gamemanager.sound_effects_value/100)
+		death_sound.play()
+		await death_sound.finished
 		gameover_label.visible=true
 		gameover.visible=true
 		paused_menu.visible=false
@@ -130,6 +136,7 @@ func _on_revive_pressed() -> void:
 	Gamemanager.revivals-=1
 	update_powerups()
 	get_tree().paused=false
+	revive_sound.play()
 	reviving = true
 	player=get_tree().get_first_node_in_group("player")
 	player.current_light=1.0
@@ -153,6 +160,7 @@ func instant_refill_pressed():
 	if Gamemanager.instant_refills>0:
 		player.current_light=1.0
 		Gamemanager.instant_refills-=1
+		refill_sound.play()
 		update_powerups()
 	else:
 		pass
@@ -160,6 +168,7 @@ func instant_refill_pressed():
 func invincibility_pressed():
 	if Gamemanager.invincibilities>0:
 		Gamemanager.invincibilities-=1
+		invincible_sound.play()
 		update_powerups()
 		player.start_invincibility()
 	else:
@@ -168,6 +177,7 @@ func invincibility_pressed():
 func spectra_blast_pressed():
 	if Gamemanager.spectra_blasts>0:
 		Gamemanager.spectra_blasts-=1
+		blast_sound.play()
 		update_powerups()
 		player.spectrablast()
 	

@@ -1,10 +1,15 @@
-[gd_scene load_steps=15 format=4 uid="uid://dk5idtecgaucl"]
+[gd_scene load_steps=31 format=4 uid="uid://dk5idtecgaucl"]
 
 [ext_resource type="Script" uid="uid://dkrxalnyi4lc0" path="res://script/help.gd" id="1_2by0i"]
 [ext_resource type="Texture2D" uid="uid://m6nmookv05gk" path="res://assests/tile.png" id="1_chmrd"]
 [ext_resource type="Texture2D" uid="uid://bka68ah7u3xbm" path="res://assests/rock.png" id="2_2by0i"]
 [ext_resource type="PackedScene" uid="uid://dq8nu6cdd5l21" path="res://scenes/main_menu_enemy.tscn" id="3_oar4r"]
 [ext_resource type="AudioStream" uid="uid://xcqq0fkl2c5t" path="res://assests/mainmenu_bg.mp3" id="5_oar4r"]
+[ext_resource type="Texture2D" uid="uid://dlstsxn1n6m3n" path="res://assests/game_play1.png" id="6_mpb58"]
+[ext_resource type="Texture2D" uid="uid://dja6frx1fscgq" path="res://assests/game_play2.png" id="7_i3xxq"]
+[ext_resource type="Texture2D" uid="uid://c7ystsqu3b0ni" path="res://assests/game_play3.png" id="8_0eisp"]
+[ext_resource type="Texture2D" uid="uid://c3w1cwrtvuj84" path="res://assests/game_play4.png" id="9_tbbma"]
+[ext_resource type="Texture2D" uid="uid://eg6581ysnmuc" path="res://assests/game_play5.png" id="10_i3xxq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2c3wl"]
 texture = ExtResource("1_chmrd")
@@ -84,6 +89,109 @@ gradient = SubResource("Gradient_gis3k")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24it5"]
+atlas = ExtResource("6_mpb58")
+region = Rect2(0, 0, 1153, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mqwv"]
+atlas = ExtResource("7_i3xxq")
+region = Rect2(0, 0, 1150, 644)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oclsq"]
+atlas = ExtResource("8_0eisp")
+region = Rect2(0, 0, 1150, 644)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsstt"]
+atlas = ExtResource("9_tbbma")
+region = Rect2(0, 0, 1150, 644)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eisp"]
+atlas = ExtResource("10_i3xxq")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2ygu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24it5")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mqwv")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oclsq")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsstt")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eisp")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t21m"]
+bg_color = Color(0.02745098, 0.02745098, 0.02745098, 0.8627451)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6nf5"]
+bg_color = Color(0.03137255, 0.46666667, 0.67058825, 0.827451)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.011764706, 0.33333334, 0.56078434, 0.827451)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Gradient" id="Gradient_jlusn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ylyn"]
+gradient = SubResource("Gradient_jlusn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yy26"]
+bg_color = Color(0.03137255, 0.46666667, 0.67058825, 0.827451)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.011764706, 0.33333334, 0.56078434, 0.827451)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="Help" type="Node2D"]
 script = ExtResource("1_2by0i")
@@ -179,7 +287,13 @@ move towards and collide with the spark
 once you collide the spark will disappear and you will be rewarded
 Yes you're not alone the omens of the abssy seek your light and will quench it on contact though they die
 So when your light is in dire fading better run 
-Repeat the steps and accumulate sparks"
+Repeat the steps and accumulate sparks[/ul]
+
+[u][b]Power Ups[/b][/u]
+[ul][b]Instant Refill[/b]: (Click key '1'), This restores your light back to its max.
+[b]Invincibility[/b]: (Click key '2') Maintains your current light for some seconds usefull when you need to reach that far spark.
+[b]Spectra Blast[/b]: (Click key '3') )Wipes out all visible enemies off the screen, very usefull when the enemies come in multitudes
+[b]Revival[/b]:(Click Revive Button) Ressurect from death, got overpowered! this is the only come back to get that High Score higher"
 
 [node name="back" type="Button" parent="."]
 offset_left = 251.15384
@@ -199,4 +313,137 @@ texture = SubResource("GradientTexture2D_hq4sr")
 stream = ExtResource("5_oar4r")
 autoplay = true
 
+[node name="visual_guide_button" type="Button" parent="."]
+offset_left = 148.0
+offset_right = 368.0
+offset_bottom = 31.0
+text = "Click here for a visual guide"
+
+[node name="visual_guide2" type="Node2D" parent="."]
+visible = false
+
+[node name="game_play1" type="AnimatedSprite2D" parent="visual_guide2"]
+position = Vector2(272.37497, 153.00002)
+scale = Vector2(0.47454298, 0.47295204)
+sprite_frames = SubResource("SpriteFrames_v2ygu")
+animation = &"5"
+
+[node name="img1" type="RichTextLabel" parent="visual_guide2/game_play1"]
+offset_left = 167.79308
+offset_top = -52.85952
+offset_right = 450.17004
+offset_bottom = 74.0032
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_4t21m")
+text = "To move use the the keys WASD or make use of the  Arrow keys to move in the relative Direction"
+metadata/_edit_use_anchors_ = true
+
+[node name="img2" type="RichTextLabel" parent="visual_guide2/game_play1"]
+visible = false
+offset_left = 117.2181
+offset_top = 48.630672
+offset_right = 399.59506
+offset_bottom = 175.4934
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_4t21m")
+text = "Move to collide with the the spark to increase your light and earn sparks"
+
+[node name="img3" type="RichTextLabel" parent="visual_guide2/game_play1"]
+visible = false
+offset_left = 140.3983
+offset_top = -38.05887
+offset_right = 422.77527
+offset_bottom = 112.06204
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_4t21m")
+text = "If an enemy touches your lights it takes away a tenth of of it and dies ghost white on the spot. So be careful"
+
+[node name="img4" type="RichTextLabel" parent="visual_guide2/game_play1"]
+visible = false
+offset_left = -432.7848
+offset_top = -196.6373
+offset_right = -21.863098
+offset_bottom = 289.66995
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_4t21m")
+bbcode_enabled = true
+text = "[u][b]Power Ups[/b][/u]
+[ul][b]Instant Refill[/b]: (Click key '1'), This restores your light back to its max.
+[b]Invincibility[/b]: (Click key '2') Maintains your current light for some seconds usefull when you need to reach that far spark.
+[b]Spectra Blast[/b]: (Click key '3') )Wipes out all visible enemies off the screen, very usefull when the enemies come in multitudes
+[b]Revival[/b]:(Click Revive Button) Ressurect from death, got overpowered! this is the only come back to get that High Score higher. Works after you die."
+
+[node name="img5" type="RichTextLabel" parent="visual_guide2/game_play1"]
+visible = false
+offset_left = -127.22763
+offset_top = -222.00986
+offset_right = 155.14932
+offset_bottom = -131.09155
+theme_override_colors/default_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+theme_override_font_sizes/bold_italics_font_size = 21
+theme_override_font_sizes/italics_font_size = 21
+theme_override_font_sizes/mono_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_4t21m")
+text = "You can click here to pause or use the space bar, Click key 'R' for a quick restart."
+
+[node name="Next" type="Button" parent="visual_guide2"]
+offset_left = 491.16003
+offset_top = 267.7443
+offset_right = 536.16003
+offset_bottom = 298.7443
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6nf5")
+text = "Next"
+
+[node name="PointLight2D" type="PointLight2D" parent="visual_guide2/Next"]
+position = Vector2(21.799994, 16.66394)
+scale = Vector2(1.2500002, 1)
+texture = SubResource("GradientTexture2D_0ylyn")
+
+[node name="Previous" type="Button" parent="visual_guide2"]
+offset_left = 406.58002
+offset_top = 267.5843
+offset_right = 481.58002
+offset_bottom = 298.5843
+theme_override_styles/normal = SubResource("StyleBoxFlat_3yy26")
+text = "Previous"
+
+[node name="PointLight2D" type="PointLight2D" parent="visual_guide2/Previous"]
+position = Vector2(40.799988, 16.66394)
+scale = Vector2(1.2500002, 1)
+texture = SubResource("GradientTexture2D_0ylyn")
+
+[node name="Back_2" type="Button" parent="visual_guide2"]
+offset_left = 8.935482
+offset_top = 268.56873
+offset_right = 53.935482
+offset_bottom = 299.56873
+theme_override_colors/font_color = Color(0.89037144, 0.8123264, 0.22117612, 1)
+text = "Back"
+
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="visual_guide_button" to="." method="_on_visual_guide_button_pressed"]
+[connection signal="pressed" from="visual_guide2/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="visual_guide2/Previous" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="visual_guide2/Back_2" to="." method="_on_back_2_pressed"]
